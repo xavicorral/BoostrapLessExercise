@@ -1,0 +1,49 @@
+$background-color: rgb(0, 0, 0);
+$text-color: white;
+$main-color: #12AFAF;
+$icon-color: #009500;
+$menu-secondary: #064e4e;
+$menu-border: #8c8888;
+
+@mixin slowTransition {
+  transition: all 0.5s ease-in;
+}
+
+@mixin centerHorizontally {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin buttonName {
+  border-radius: 5px;
+  color: white;
+  padding: 0.8rem 1.3rem;
+  font-size: 1.2rem;
+  background-color: $main-color;
+  border: 0;
+  @include slowTransition();
+
+  &:hover {
+    background-color: $icon-color;
+  }
+}
+
+@mixin iconDecorated($fontsize: 2rem, $background-color:$icon-color) {
+  color: $text-color;
+  background-color: $background-color;
+  font-size: $fontsize;
+  padding: calc(#{$fontsize} / 1.5);
+  border-radius: 50%;
+}
+
+@keyframes moveDown {  
+  0% {
+    transform: translateY(0);  
+  }  
+  50% {
+    transform: translateY(5px);  
+  }
+  100% {    
+    transform: translateY(0);  
+  }
+}

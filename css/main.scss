@@ -1,0 +1,463 @@
+@import 'mixins';
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  font-family: 'Open Sans';
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: $background-color;
+  //background-color: beige;
+  color: $text-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  
+
+  .menu-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    @include slowTransition();
+
+    .logo {
+      width: 150px;
+      margin-left: 2rem;
+    }
+  
+    .menu {
+      margin-right: 2rem;
+      nav {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+      }
+    
+      nav > ul {
+        list-style-type: none;
+        display: none;
+        margin: 0;
+    
+        li {
+          margin: 0;
+          padding-left: 1rem;
+          padding-right: 1rem;
+          padding-top: 0;
+          padding-bottom: 0;
+    
+          a {
+            color: $text-color;
+            text-decoration: none;
+            @include slowTransition();
+  
+            &:hover {
+              color: $main-color;
+            }
+          }
+        }
+      }
+    
+      nav i {
+        font-size: 2rem;
+        margin: 0 1rem;
+        padding-top: 0;
+        padding-bottom: 0;
+    
+        &.fa-bars {
+          display: block;
+        }
+      }
+    }
+  
+    &.extended {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      background-color: $menu-secondary;
+    }
+  }
+
+  form#search-block {
+    display: none;
+    margin-top: 20px;
+    flex: 1 1 100%;
+    @include slowTransition();
+
+    &.open {
+      display: block;
+      height: 70px;
+    }
+
+    &.closed {
+      display: none;
+    }
+
+    div.search-box {
+      display: flex;
+      justify-content: center;
+      
+      input {
+        margin: 0;
+        border: 0;
+        padding-left: 10px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        font-size: 1rem;
+        color: darken($text-color, 30);
+        width: 70%;
+      }
+      button {
+        background-color: $main-color;
+        color: $text-color;
+        border: 0;
+        padding: 0.8rem;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  div.stacked-menu {
+    width: 100%;
+    display: none;
+
+    &.open {
+      display: block;
+    }
+
+    &.closed {
+      display: none;
+    }
+
+    ul {
+      list-style-type: none;
+      text-transform: uppercase;
+      padding-inline-start: 0;
+      margin-left: 2rem;
+      margin-right: 2rem;
+
+
+      li {
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid $menu-border;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+                  
+        a {
+          color: $text-color;
+          text-decoration: none;
+          @include slowTransition();
+  
+          &:hover {
+            color: $main-color;
+          }
+        }
+      }
+
+      li:first-child {
+        border-top: 1px solid $menu-border;
+      }
+
+    }
+  }
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+section#disenyo {
+  height: 110vh;
+  background-image: url(/images/fondo-encabezado-grande.jpg);
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  margin-bottom: 0;
+
+  h1 {
+    text-align: center;
+    padding-top: 35vh;
+    font-weight: 100;
+    font-size: 3rem;
+    margin-block-end: 0;
+  }
+
+  h2 {
+    text-align: center;
+    font-weight: 100;
+    font-size: 1rem;
+  }
+
+  button {
+    margin: 0 auto;
+    display: block;
+    @include buttonName();
+  }
+
+  div.arrow-down {
+    position: absolute;
+    bottom: 15;
+    left: 47%;
+    font-size: 2.5rem;
+    animation: moveDown 2s linear infinite;
+  }
+}
+
+section#agencia {
+  background-color: $main-color;
+  color: white;
+  margin-top: 0;
+
+  div.container {
+    display: flex;
+    flex-direction: column;
+
+    div.wrapper {
+      h2 {
+        padding-top: 2rem;
+        text-align: center;
+        width: 80%;
+        margin: 0 auto;
+      }
+    
+      p {
+        text-align: justify;
+      }
+    }
+  
+    div.img-agencia {
+      margin: 10px auto;
+      width: 70%;
+      display: flex;
+      justify-content: center;
+  
+      img {
+        padding: 10px 0;
+        height: 400px;
+      }
+    }
+  }
+}
+
+section#eleccion {
+  h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    span {
+      color: $main-color;
+    }
+  }
+  h2 {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
+  div.servicios {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "servicio1 servicio4"
+      "servicio2 servicio5"
+      "servicio3 servicio6";
+
+    div.servicio1 {
+      grid-area: servicio1;
+    }
+  
+    div.servicio2 {
+      grid-area: servicio2;
+    }
+  
+    div.servicio3 {
+      grid-area: servicio3;
+    }
+  
+    div.servicio4 {
+      grid-area: servicio4;
+    }
+  
+    div.servicio5 {
+      grid-area: servicio5;
+    }
+  
+    div.servicio6 {
+      grid-area: servicio6;
+    }
+  
+    div.center-col {
+      display: none;
+      grid-area: servicio-img;
+    }
+
+    div.service-box {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-flow: column-reverse;
+      justify-content: flex-end;
+
+      .service-title {        
+        .h3 {
+          margin-block-start: 0.5em;
+          margin-block-end: 0.5em;
+          text-align: center;
+        }
+  
+        p {
+          display: none;
+        }
+      }
+
+      & > i {
+        @include iconDecorated(2rem, $icon-color);
+      }
+    }
+  }
+}
+
+section#servicios {
+  color: $text-color;
+  background-image: url(/images/fondo-servicios.jpg);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  h1 {
+    text-align: center;
+    padding-top: 1rem;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 1rem;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+
+    li {
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      p.servicio-txt {
+        display: none;
+      }
+
+      div.icon {
+        display: flex;
+        align-items: center;
+        i {
+          @include iconDecorated(1.5rem, $main-color);
+        }
+      }
+
+      span.servicio {
+        margin-left: 1rem;
+      }
+
+      div.arrow {
+        font-size: 2rem;
+        color: darken($text-color, 30);
+      }
+      div.button-info {
+        display: none;
+      }
+    }
+  }
+}
+
+a i {
+  &.arrow-return-up {  
+    display: none;
+    font-size: 2.5rem;
+    color: $main-color;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  &.shown {
+    display: block;
+  }
+}
+
+footer {
+  background-color: $background-color;
+  color: $text-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+
+  .social {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    margin-top: 0.4rem;
+    color: darken($text-color, 20);
+
+    i {
+      margin-left: 5px;
+    }
+  }
+}
+
+section#ultimos-proyectos {
+  h1 {
+    @include centerHorizontally();
+    font-size: 2rem;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+  }
+  .carrousel {
+    display: flex;
+    width: 100vw;
+    overflow-x: scroll;
+
+    .carrousel-item {
+      padding: 0.7rem;
+
+      h2 {
+        display: flex;
+        justify-content: center;
+        font-size: 1rem;
+        margin-block-start: 0;
+        margin-block-end: 0.3rem;
+      }
+    }
+
+    img {
+    }
+  }
+
+  .arrows {
+    @include centerHorizontally();
+    i {
+      font-size: 2rem;
+      padding: 1rem;
+      //background-color: $main-color;
+      color: $main-color;
+      
+    }
+  }
+}
+@import 'mobile';
