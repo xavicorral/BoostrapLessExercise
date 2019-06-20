@@ -6,6 +6,8 @@ let menuButton = document.querySelector('.menu-button');
 let menuBlock = document.querySelector('.stacked-menu');
 let isSearchOpen = false;
 let isMenuOpen = false;
+let viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+let animatedElements = document.querySelectorAll('.animated');
 
 const toggleSearchOpenHander = () => {
   if (isSearchOpen) {
@@ -33,7 +35,9 @@ const toggleMenuOpenHander = () => {
 
 const scrollHandler = () => {
   const currentScrollPos = window.pageYOffset;
-  console.log(currentScrollPos)
+  
+  //console.log(currentScrollPos + viewportHeight+ 50);
+
   if (currentScrollPos > 864) {
     arrowElement.classList.add('shown');
   } else {
@@ -45,6 +49,14 @@ const scrollHandler = () => {
   } else {
     menuWrapperElement.classList.remove('extended');
   }
+
+  animatedElements.forEach(animatedElement => {
+    if(animatedElement.offsetTop < (currentScrollPos + viewportHeight - 70) ){
+      animatedElement.style.opacity = 1;
+      animatedElement.classList.add('slideInFromBottom');
+    }
+  });
+
 }
 
 window.onscroll = scrollHandler;

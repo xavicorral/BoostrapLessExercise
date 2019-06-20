@@ -5,6 +5,14 @@ $icon-color: #009500;
 $menu-secondary: #064e4e;
 $menu-border: #8c8888;
 
+.animated {
+  opacity: 0;
+  transition: all 0.5s ease-in;
+}
+.slideInFromBottom {
+  transform: translate3d(0,-10px,0);
+}
+
 @mixin slowTransition {
   transition: all 0.5s ease-in;
 }
@@ -45,5 +53,17 @@ $menu-border: #8c8888;
   }
   100% {    
     transform: translateY(0);  
+  }
+}
+
+@keyframes slideInFromBottom {  
+  0% {
+    transform: translateY(0px);  
+  }  
+  50% {
+    transform: translateY(-5px);  
+  }
+  100% {    
+    transform: translateY(-10px);  
   }
 }
